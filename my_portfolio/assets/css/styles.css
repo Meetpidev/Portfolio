@@ -1,27 +1,20 @@
-/*===== GOOGLE FONTS =====*/
+
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
-/*===== VARIABLES CSS =====*/
 :root {
   --header-height: 3rem;
   --font-semi: 600;
-  /*===== Colores =====*/
-  /*Purple 260 - Red 355 - Blue 224 - Pink 340*/
-  /* HSL color mode */
   --hue-color: 224;
   --first-color: hsl(var(--hue-color), 89%, 60%);
   --second-color: hsl(var(--hue-color), 56%, 12%);
-  /*===== Fuente y tipografia =====*/
   --body-font: "Poppins", sans-serif;
   --big-font-size: 2rem;
   --h2-font-size: 1.25rem;
   --normal-font-size: .938rem;
   --smaller-font-size: .75rem;
-  /*===== Margenes =====*/
   --mb-2: 1rem;
   --mb-4: 2rem;
   --mb-5: 2.5rem;
   --mb-6: 3rem;
-  /*===== z index =====*/
   --z-back: -10;
   --z-fixed: 100;
 }
@@ -34,7 +27,7 @@
   }
 }
 
-/*===== BASE =====*/
+
 *, ::before, ::after {
   box-sizing: border-box;
 }
@@ -48,6 +41,118 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: var(--second-color);
+}
+
+.hidden {
+  opacity: 0;
+  filter: blur(2px);
+  transition: all 3s;
+  animation-timeline: view();
+}
+.show {
+  filter: blur(0);
+  transform: translateX(0);
+  opacity: 1;
+}
+@keyframes fade-in {
+  from {
+    scale: 0.8;
+    opacity: 1;
+  }
+  to {
+    scale: 1;
+    opacity: 1;
+  }
+}
+
+.loader {
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color:#fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 20px;
+  z-index: 9999;
+  animation: Enter 1s cubic-bezier(0.19, 1, 0.22, 1) 7s both;
+  animation: stop 1s cubic-bezier(0.19, 1, 0.22, 1) 7.1s both;
+}
+#w-load {
+  width: 400px;
+  height: 90px;
+  overflow: hidden;
+}
+#w-load .element {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.one span {
+  color: blue;
+  font-size: larger;
+  font-weight: bold;
+  font-family: var(--ff-family);
+}
+.two span {
+  color: red;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: var(--ff-family);
+  width: 100%;
+}
+.three span {
+  font-size: x-large;
+  font-weight: bold;
+  color: darkred;
+  font-family: var(--ff-family);
+}
+.four span {
+  color: red;
+  font-size: larger;
+  font-weight: bold;
+  font-family: var(--ff-family);
+}
+#w-load .element:nth-child(1) {
+  animation: Up 2s cubic-bezier(0.19, 1, 0.22, 1) 1s both;
+}
+#w-load .element:nth-child(2) {
+  animation: Up 2s cubic-bezier(0.19, 1, 0.22, 1) 3s both;
+}
+#w-load .element:nth-child(3) {
+  animation: Up 2s cubic-bezier(0.19, 1, 0.22, 1) 5s both;
+}
+.loader .five {
+  animation: Up 2s cubic-bezier(0.19, 1, 0.22, 1) 7s both;
+}
+@keyframes Up {
+  to {
+    margin-top: -100px;
+  }
+}
+@keyframes Enter {
+  to {
+    transform: translateY(-100%);
+  }
+}
+@keyframes stop{
+  to{display: none; background: rgba(255,255,255,0.9);}
+}
+
+@keyframes view {
+  0% {
+    display: none;
+  }
+
+  100% {
+    display: block;
+  }
 }
 
 h1, h2, p {
@@ -70,7 +175,7 @@ img {
   display: block;
 }
 
-/*===== CLASS CSS ===== */
+
 .section-title {
   position: relative;
   font-size: var(--h2-font-size);
